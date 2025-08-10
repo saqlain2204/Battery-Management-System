@@ -7,9 +7,10 @@ __pycache__
 unibo-powertools-dataset/
 Experimental_data_aged_cell.csv/
 
-# Models folder - ignore all models except LinearRegression
+# Models folder - ignore all models except LinearRegression and DecisionTree
 models/*
 !models/SOC_LinearRegression_*.joblib
+!models/SOC_DecisionTreeRegressor_*.joblib
 !models/matlab_compatible/
 
 # Large data files
