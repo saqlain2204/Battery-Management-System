@@ -193,8 +193,8 @@
     }
   ],
   "production_model": {
-    "model_id": "rf_v1_20250804_003236",
-    "reason": "Best overall performance with R² = 0.9968 and RMSE = 1.071"
+    "model_id": "lr_v1_20250804_004225",
+    "reason": "Lightweight model suitable for deployment, fast predictions, and available in repository"
   },
   "deployment_info": {
     "created_date": "2025-08-04",

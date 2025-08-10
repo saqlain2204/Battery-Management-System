@@ -71,11 +71,26 @@ def get_dataset_info():
         return config['dataset_info']
     return None
 
-model_path = get_latest_model()
-if model_path:
-    model = joblib.load(model_path)
-else:
-    model = None
+# Load the specific LinearRegression model
+def load_linear_regression_model():
+    """Load the LinearRegression model specifically"""
+    model_filename = "SOC_LinearRegression_v1.0_test_result_trial_end_v1.0_20250804_004225.joblib"
+    model_path = os.path.join('models', model_filename)
+    
+    if os.path.exists(model_path):
+        try:
+            loaded_model = joblib.load(model_path)
+            st.sidebar.success(f"✅ Model loaded: LinearRegression")
+            return loaded_model
+        except Exception as e:
+            st.sidebar.error(f"❌ Error loading model: {e}")
+            return None
+    else:
+        st.sidebar.error(f"❌ Model file not found: {model_filename}")
+        return None
+
+# Load the LinearRegression model for predictions
+model = load_linear_regression_model()
 
 # Set page config for better UI
 st.set_page_config(
