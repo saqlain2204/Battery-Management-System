@@ -1,0 +1,26 @@
+.venv/
+__pycache__
+.streamlit/secrets.toml
+
+# Data files - exclude all CSV files and data directories
+*.csv
+unibo-powertools-dataset/
+Experimental_data_aged_cell.csv/
+
+# Models folder - ignore all models except LinearRegression
+models/*
+!models/SOC_LinearRegression_*.joblib
+!models/matlab_compatible/
+
+# Large data files
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db

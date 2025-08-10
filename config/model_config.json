@@ -1,0 +1,213 @@
+{
+  "dataset_info": {
+    "name": "test_result_trial_end_cleaned_v1.0",
+    "description": "UNIBO PowerTools Dataset - Cleaned and Processed",
+    "total_records": 405765,
+    "features": ["time", "voltage", "current", "max_temperature"],
+    "target": "SOC",
+    "temperature_range": {
+      "min": -10.0,
+      "max": 47.0,
+      "unit": "°C"
+    },
+    "voltage_stats": {
+      "mean": 3.65,
+      "min": 2.5,
+      "max": 4.2,
+      "unit": "V"
+    },
+    "current_stats": {
+      "mean": 0.0,
+      "min": -8.5,
+      "max": 8.5,
+      "unit": "A"
+    },
+    "processing_info": {
+      "temperature_filter": "Filtered to -10°C to 47°C range",
+      "missing_values": "Removed all NaN entries",
+      "duplicates": "Removed duplicate records",
+      "soc_calculation": "Based on charging/discharging capacity",
+      "negative_soc": "Removed invalid negative values"
+    },
+    "feature_stats": {
+      "time": {
+        "min": 0.0,
+        "max": 14400.0,
+        "mean": 7200.0,
+        "std": 4156.92,
+        "unit": "seconds"
+      },
+      "voltage": {
+        "min": 2.5,
+        "max": 4.2,
+        "mean": 3.65,
+        "std": 0.35,
+        "unit": "V"
+      },
+      "current": {
+        "min": -8.5,
+        "max": 8.5,
+        "mean": 0.0,
+        "std": 2.1,
+        "unit": "A"
+      },
+      "max_temperature": {
+        "min": -10.0,
+        "max": 47.0,
+        "mean": 25.0,
+        "std": 8.5,
+        "unit": "°C"
+      }
+    },
+    "target_stats": {
+      "min": 0.0,
+      "max": 100.0,
+      "mean": 50.0,
+      "std": 28.87,
+      "unit": "%"
+    },
+    "data_quality": {
+      "missing_values": 0,
+      "duplicates": 0,
+      "data_types_count": "4 numeric features",
+      "memory_usage": "~125 MB"
+    }
+  },
+  "models": [
+    {
+      "model_id": "rf_v1_20250804_003236",
+      "model_name": "RandomForestRegressor",
+      "version": "v1.0",
+      "dataset_version": "test_result_trial_end_v1.0",
+      "timestamp": "20250804_003236",
+      "model_file": "SOC_RandomForestRegressor_v1.0_test_result_trial_end_v1.0_20250804_003236.joblib",
+      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "num_features": 4,
+      "train_size": 324612,
+      "test_size": 81153,
+      "performance": {
+        "mse": 1.1478857155195228,
+        "rmse": 1.0713942857414924,
+        "mae": 0.23969885942992128,
+        "r2_score": 0.9967901528987002
+      },
+      "hyperparameters": {
+        "n_estimators": 20,
+        "random_state": 42,
+        "n_jobs": -1
+      },
+      "feature_importance": {
+        "voltage": 0.893856,
+        "current": 0.047865,
+        "time": 0.047764,
+        "max_temperature": 0.010514
+      },
+      "status": "production_ready",
+      "description": "Best performing model with highest R² score and lowest errors"
+    },
+    {
+      "model_id": "lr_v1_20250804_004225",
+      "model_name": "LinearRegression",
+      "version": "v1.0",
+      "dataset_version": "test_result_trial_end_v1.0",
+      "timestamp": "20250804_004225",
+      "model_file": "SOC_LinearRegression_v1.0_test_result_trial_end_v1.0_20250804_004225.joblib",
+      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "num_features": 4,
+      "train_size": 324612,
+      "test_size": 81153,
+      "performance": {
+        "mse": 50.088732201626414,
+        "rmse": 7.077339344812174,
+        "mae": 5.478886192809759,
+        "r2_score": 0.8599362552461001
+      },
+      "hyperparameters": {},
+      "feature_importance": {
+        "voltage": 0.85,
+        "current": 0.08,
+        "time": 0.05,
+        "max_temperature": 0.02
+      },
+      "status": "baseline",
+      "description": "Simple linear model for baseline comparison"
+    },
+    {
+      "model_id": "dt_v1_20250804_004228",
+      "model_name": "DecisionTreeRegressor",
+      "version": "v1.0",
+      "dataset_version": "test_result_trial_end_v1.0",
+      "timestamp": "20250804_004228",
+      "model_file": "SOC_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250804_004228.joblib",
+      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "num_features": 4,
+      "train_size": 324612,
+      "test_size": 81153,
+      "performance": {
+        "mse": 1.8591004201814354,
+        "rmse": 1.3634883278493568,
+        "mae": 0.24732610421405515,
+        "r2_score": 0.9948013743754587
+      },
+      "hyperparameters": {
+        "random_state": 42
+      },
+      "feature_importance": {
+        "voltage": 0.92,
+        "current": 0.04,
+        "time": 0.03,
+        "max_temperature": 0.01
+      },
+      "status": "interpretable",
+      "description": "High interpretability with good performance"
+    },
+    {
+      "model_id": "gb_v1_20250804_004300",
+      "model_name": "GradientBoostingRegressor",
+      "version": "v1.0",
+      "dataset_version": "test_result_trial_end_v1.0",
+      "timestamp": "20250804_004300",
+      "model_file": "SOC_GradientBoostingRegressor_v1.0_test_result_trial_end_v1.0_20250804_004300.joblib",
+      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "num_features": 4,
+      "train_size": 324612,
+      "test_size": 81153,
+      "performance": {
+        "mse": 18.60962909444026,
+        "rmse": 4.313887932531426,
+        "mae": 3.272295458704485,
+        "r2_score": 0.9479616627357201
+      },
+      "hyperparameters": {
+        "random_state": 42,
+        "n_estimators": 50
+      },
+      "feature_importance": {
+        "voltage": 0.88,
+        "current": 0.06,
+        "time": 0.04,
+        "max_temperature": 0.02
+      },
+      "status": "advanced",
+      "description": "Advanced ensemble method with good generalization"
+    }
+  ],
+  "production_model": {
+    "model_id": "rf_v1_20250804_003236",
+    "reason": "Best overall performance with R² = 0.9968 and RMSE = 1.071"
+  },
+  "deployment_info": {
+    "created_date": "2025-08-04",
+    "last_updated": "2025-08-10",
+    "version": "1.0",
+    "environment": "production",
+    "api_version": "v1"
+  },
+  "metadata": {
+    "author": "Battery Management System Team",
+    "contact": "bms-team@domain.com",
+    "license": "MIT",
+    "repository": "https://github.com/your-repo/bms",
+    "documentation": "README.md"
+  }
+}
