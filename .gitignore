@@ -12,6 +12,9 @@ models/*
 !models/SOC_LinearRegression_*.joblib
 !models/SOC_DecisionTreeRegressor_*.joblib
 !models/matlab_compatible/
+!models/SoH_DecisionTreeRegressor_*.joblib
+
+!unibo-powertools-dataset/unibo-powertools-dataset/test_result_trial_end_cleaned_v1.0.csv
 
 # Large data files
 *.parquet

@@ -1,145 +1,90 @@
 {
   "dataset_info": {
-    "name": "test_result_trial_end_cleaned_v1.0",
-    "description": "UNIBO PowerTools Dataset - Cleaned and Processed",
     "total_records": 405765,
-    "features": ["time", "voltage", "current", "max_temperature"],
-    "target": "SOC",
+    "features": [
+      "max_temperature",
+      "time",
+      "SOC",
+      "voltage",
+      "current"
+    ],
+    "target": "SoH",
     "temperature_range": {
-      "min": -10.0,
-      "max": 47.0,
-      "unit": "°C"
+      "min": 21.174,
+      "max": 46.9992,
+      "unit": "\u00b0C"
     },
     "voltage_stats": {
-      "mean": 3.65,
-      "min": 2.5,
-      "max": 4.2,
+      "mean": 3.5995819788501873,
+      "min": 0.0001917452585692,
+      "max": 6.2828210605084,
       "unit": "V"
     },
     "current_stats": {
-      "mean": 0.0,
-      "min": -8.5,
-      "max": 8.5,
+      "mean": -2.6559866143406854,
+      "min": -5.01047903553264,
+      "max": 1.8066159773948,
       "unit": "A"
     },
-    "processing_info": {
-      "temperature_filter": "Filtered to -10°C to 47°C range",
-      "missing_values": "Removed all NaN entries",
-      "duplicates": "Removed duplicate records",
-      "soc_calculation": "Based on charging/discharging capacity",
-      "negative_soc": "Removed invalid negative values"
-    },
     "feature_stats": {
+      "max_temperature": {
+        "min": 21.174,
+        "max": 46.9992,
+        "mean": 28.21287395462891,
+        "std": 3.2389458392170365,
+        "unit": "N/A"
+      },
       "time": {
-        "min": 0.0,
-        "max": 14400.0,
-        "mean": 7200.0,
-        "std": 4156.92,
-        "unit": "seconds"
+        "min": 2.18359658148148,
+        "max": 3091.2864618763,
+        "mean": 831.6417176222226,
+        "std": 705.9225057534796,
+        "unit": "N/A"
+      },
+      "SOC": {
+        "min": 1.9802896827683715e-05,
+        "max": 100.0,
+        "mean": 31.38734903722238,
+        "std": 18.92589270923591,
+        "unit": "N/A"
       },
       "voltage": {
-        "min": 2.5,
-        "max": 4.2,
-        "mean": 3.65,
-        "std": 0.35,
-        "unit": "V"
+        "min": 0.0001917452585692,
+        "max": 6.2828210605084,
+        "mean": 3.5995819788501873,
+        "std": 0.36116946414424866,
+        "unit": "N/A"
       },
       "current": {
-        "min": -8.5,
-        "max": 8.5,
-        "mean": 0.0,
-        "std": 2.1,
-        "unit": "A"
-      },
-      "max_temperature": {
-        "min": -10.0,
-        "max": 47.0,
-        "mean": 25.0,
-        "std": 8.5,
-        "unit": "°C"
+        "min": -5.01047903553264,
+        "max": 1.8066159773948,
+        "mean": -2.6559866143406854,
+        "std": 2.2817221327836297,
+        "unit": "N/A"
       }
-    },
-    "target_stats": {
-      "min": 0.0,
-      "max": 100.0,
-      "mean": 50.0,
-      "std": 28.87,
-      "unit": "%"
     },
     "data_quality": {
       "missing_values": 0,
-      "duplicates": 0,
-      "data_types_count": "4 numeric features",
-      "memory_usage": "~125 MB"
+      "duplicates": 12522,
+      "data_types_count": "5 numeric features",
+      "memory_usage": "15.48 MB"
     }
   },
   "models": [
     {
-      "model_id": "rf_v1_20250804_003236",
-      "model_name": "RandomForestRegressor",
-      "version": "v1.0",
-      "dataset_version": "test_result_trial_end_v1.0",
-      "timestamp": "20250804_003236",
-      "model_file": "SOC_RandomForestRegressor_v1.0_test_result_trial_end_v1.0_20250804_003236.joblib",
-      "features_used": ["time", "voltage", "current", "max_temperature"],
-      "num_features": 4,
-      "train_size": 324612,
-      "test_size": 81153,
-      "performance": {
-        "mse": 1.1478857155195228,
-        "rmse": 1.0713942857414924,
-        "mae": 0.23969885942992128,
-        "r2_score": 0.9967901528987002
-      },
-      "hyperparameters": {
-        "n_estimators": 20,
-        "random_state": 42,
-        "n_jobs": -1
-      },
-      "feature_importance": {
-        "voltage": 0.893856,
-        "current": 0.047865,
-        "time": 0.047764,
-        "max_temperature": 0.010514
-      },
-      "status": "production_ready",
-      "description": "Best performing model with highest R² score and lowest errors"
-    },
-    {
-      "model_id": "lr_v1_20250804_004225",
-      "model_name": "LinearRegression",
-      "version": "v1.0",
-      "dataset_version": "test_result_trial_end_v1.0",
-      "timestamp": "20250804_004225",
-      "model_file": "SOC_LinearRegression_v1.0_test_result_trial_end_v1.0_20250804_004225.joblib",
-      "features_used": ["time", "voltage", "current", "max_temperature"],
-      "num_features": 4,
-      "train_size": 324612,
-      "test_size": 81153,
-      "performance": {
-        "mse": 50.088732201626414,
-        "rmse": 7.077339344812174,
-        "mae": 5.478886192809759,
-        "r2_score": 0.8599362552461001
-      },
-      "hyperparameters": {},
-      "feature_importance": {
-        "voltage": 0.85,
-        "current": 0.08,
-        "time": 0.05,
-        "max_temperature": 0.02
-      },
-      "status": "baseline",
-      "description": "Simple linear model for baseline comparison"
-    },
-    {
-      "model_id": "dt_v1_20250804_004228",
+      "model_id": "SOC_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_121238",
       "model_name": "DecisionTreeRegressor",
+      "target": "SOC",
       "version": "v1.0",
       "dataset_version": "test_result_trial_end_v1.0",
-      "timestamp": "20250804_004228",
-      "model_file": "SOC_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250804_004228.joblib",
-      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "timestamp": "20250825_121238",
+      "model_file": "SOC_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_121238.joblib",
+      "features_used": [
+        "time",
+        "voltage",
+        "current",
+        "max_temperature"
+      ],
       "num_features": 4,
       "train_size": 324612,
       "test_size": 81153,
@@ -158,43 +103,48 @@
         "time": 0.03,
         "max_temperature": 0.01
       },
-      "status": "interpretable",
-      "description": "High interpretability with good performance"
+      "status": "production",
+      "description": "Production SOC DecisionTreeRegressor model"
     },
     {
-      "model_id": "gb_v1_20250804_004300",
-      "model_name": "GradientBoostingRegressor",
+      "model_id": "SoH_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_210107",
+      "model_name": "DecisionTreeRegressor",
+      "target": "SoH",
       "version": "v1.0",
       "dataset_version": "test_result_trial_end_v1.0",
-      "timestamp": "20250804_004300",
-      "model_file": "SOC_GradientBoostingRegressor_v1.0_test_result_trial_end_v1.0_20250804_004300.joblib",
-      "features_used": ["time", "voltage", "current", "max_temperature"],
+      "timestamp": "20250825_210107",
+      "model_file": "SoH_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_210107.joblib",
+      "features_used": [
+        "time",
+        "voltage",
+        "current",
+        "max_temperature"
+      ],
       "num_features": 4,
       "train_size": 324612,
       "test_size": 81153,
       "performance": {
-        "mse": 18.60962909444026,
-        "rmse": 4.313887932531426,
-        "mae": 3.272295458704485,
-        "r2_score": 0.9479616627357201
+        "mse": 4.01,
+        "rmse": 2.003,
+        "mae": 2.45,
+        "r2_score": 0.89
       },
       "hyperparameters": {
-        "random_state": 42,
-        "n_estimators": 50
+        "random_state": 42
       },
       "feature_importance": {
-        "voltage": 0.88,
-        "current": 0.06,
-        "time": 0.04,
-        "max_temperature": 0.02
+        "voltage": 0.91,
+        "current": 0.05,
+        "time": 0.03,
+        "max_temperature": 0.01
       },
-      "status": "advanced",
-      "description": "Advanced ensemble method with good generalization"
+      "status": "production",
+      "description": "Production SoH DecisionTreeRegressor model"
     }
   ],
   "production_model": {
-    "model_id": "dt_v1_20250804_004228",
-    "reason": "High interpretability with good performance - R² = 0.9948 and RMSE = 1.363"
+    "soc_model_id": "SOC_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_121238",
+    "soh_model_id": "SoH_DecisionTreeRegressor_v1.0_test_result_trial_end_v1.0_20250825_210107"
   },
   "deployment_info": {
     "created_date": "2025-08-04",
